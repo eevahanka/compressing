@@ -2,5 +2,7 @@ This week I've mainly fought with Github which doesn't seem to be working at all
 
 I've mainly learned the very basics of how my algorthims work.
 
-Next I'll start coding and when github works I'll create some directories and clone the repository to my computer.
+Next I'll start coding.
 Also I'll initialize my project.
+
+I've used 3 hours this week
