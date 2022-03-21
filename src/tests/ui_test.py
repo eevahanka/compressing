@@ -1,4 +1,5 @@
 import unittest
+from ui import Ui
 
 class Stub_io:
     def __init__(self, inputs = []) -> None:
@@ -13,7 +14,8 @@ class Stub_io:
 
 class TestMain(unittest.TestCase):
     def setup(self):
-        pass
+        self.io = Stub_io()
+        self.stub_ui = Ui(self.io)
 
-    def test_is_working(self):
-        self.assertEqual(0, 0)
+
+
