@@ -12,10 +12,11 @@ class Stub_io:
     def output(self, user_output):
         self.outputs.append(user_output)
 
-class TestMain(unittest.TestCase):
-    def setup(self):
+class TestUi(unittest.TestCase):
+    def setUp(self):
         self.io = Stub_io()
         self.stub_ui = Ui(self.io)
 
-
-
+    def test_compare_calculates_correctly(self):
+        self.stub_ui.compare(10, 4)
+        self.assertEqual(f"compressed file is 60.0% smaller than the original", self.io.outputs[-1])

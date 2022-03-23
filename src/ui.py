@@ -1,4 +1,5 @@
 import io
+import file_acces
 
 class Ui:
     def __init__(self, io) -> None:
@@ -18,3 +19,7 @@ class Ui:
         self.io.output("compressing...")
         #will call compressing algorthims !
         self.io.output("this feature doesn't exist!")
+
+    def compare(self, original_size, new_size):
+        smaller_prosents = (original_size - new_size)/original_size *100
+        self.io.output(f"compressed file is {smaller_prosents}% smaller than the original")
