@@ -1,3 +1,5 @@
+## monday
+
 On monday I've configurated poetry and added dependensies there.
 Also started my ui, which will be very simple commandline ui.
 I made ui_test to be ready for tests, but i'm yet to implement something that I could actually test.
@@ -12,3 +14,16 @@ Next up I will figure out how I want to get files, and implement that. I'm think
 Also figure out if I can check files size in a python program, and of course implement it.
 
 I used 5 hours on monday
+
+## wednesday
+
+On wednesday I have made a way to open and write files and an ability to compare file sizes
+
+There wasn't any real problems today.
+
+I learned that I can check file size in python.
+
+next I'll probably start working on my algorithms becouse I don't think that theres much else to do...
+Theres also some finishing left in ui but nothing that would take that much time.
+
+I used approximadly 3 hours today. That makes 8 total hours for this week
