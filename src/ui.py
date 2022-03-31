@@ -1,6 +1,3 @@
-import io
-import file_acces
-
 class Ui:
     def __init__(self, io) -> None:
         self.io = io
@@ -11,7 +8,7 @@ class Ui:
         self.compressing(file_to_compress)
 
     def get_file(self):
-        #this is temporary 
+        #this is temporary
         file_to_compress = self.io.input("what do you want to compress? ")
         return file_to_compress
 
