@@ -18,5 +18,8 @@ class Ui:
         self.io.output("this feature doesn't exist!")
 
     def compare(self, original_size, new_size):
+        if original_size == 0:
+            self.io.output("original size shouldn't be zero!")
+            return
         smaller_prosents = (original_size - new_size)/original_size *100
         self.io.output(f"compressed file is {smaller_prosents}% smaller than the original")
