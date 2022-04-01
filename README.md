@@ -4,6 +4,9 @@ Project for datastructure and algorithm course at the University of Helsinki
 
 [specification document](documentation/specification_document.md)
 
+[testing document](documentation/testing_document.md)
+
 [week report 1](documentation/week_report1.md)
 
 [week report 2](documentation/week_report2.md)
+
