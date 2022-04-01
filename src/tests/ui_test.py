@@ -1,4 +1,3 @@
-from re import S
 import unittest
 from ui import Ui
 
@@ -23,5 +22,5 @@ class TestUi(unittest.TestCase):
         self.assertEqual(f"compressed file is 60.0% smaller than the original", self.io.outputs[-1])
 
     def test_compare_dosent_divide_by_zero(self):
-        self.stub_ui.compare(0,4)
+        self.stub_ui.compare(0, 4)
         self.assertEqual("original size shouldn't be zero!", self.io.outputs[-1])
