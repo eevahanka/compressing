@@ -2,6 +2,8 @@
 
 ## coverage report
 
+![test_coverage](documentation/test_coverage.jpeg)
+
 ## What has been tested and how
 
 Program has mainly been tested by automated tests.
