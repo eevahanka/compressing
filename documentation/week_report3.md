@@ -3,3 +3,5 @@ This week I have made more tests, and testing document. I have also started work
 I also tried again to get my coverage report to code cow but I still haven't managed to do it.
 
 Next I'll continue working on huffmans algorithm starting with the binary tree that it needed for it.
+
+I've used about 8 hours this week
