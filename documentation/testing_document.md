@@ -2,7 +2,7 @@
 
 ## coverage report
 
-![test_coverage](documentation/test_coverage.jpeg)
+![test_coverage](/test_coverage.jpeg)
 
 ## What has been tested and how
 
