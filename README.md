@@ -11,3 +11,6 @@ Project for datastructure and algorithm course at the University of Helsinki
 [week report 2](documentation/week_report2.md)
 
 [week report 3](documentation/week_report3.md)
+
+[week report 4](documentation/week_report4.md)
+
