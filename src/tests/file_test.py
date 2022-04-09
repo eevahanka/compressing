@@ -25,8 +25,8 @@ class TestFile_acces(unittest.TestCase):
         file_size = file_acces.get_file_size(self.file_path)
         self.assertEqual(self.size, file_size)
 
-    def test_binary_save(self):
-        bina = "1111000011001100"
-        file_acces.write_bytes(self.byte_path, bina )
-        on_file = file_acces.read_bytes(self.byte_path)
+    #def test_binary_save(self):
+        #bina = "1111000011001100"
+        #file_acces.write_bytes(self.byte_path, bina )
+        #on_file = file_acces.read_bytes(self.byte_path)
         #self.assertEqual(bina, on_file)
