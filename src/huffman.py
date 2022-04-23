@@ -58,7 +58,7 @@ def get_everything_in_bin(binary_form, tree):
     tree_lenght_bin = format(len(tree_in_binary), "032b")
     data_lenght_bin = format(len(binary_form), "032b")
     #lenght of tree in bin, lenght of the data in bin, tree in bin, data in bin, couple extra bits
-    over_from_bytes = (32 + len(tree_in_binary) + len(binary_form)) % 8
+    over_from_bytes = (64 + len(tree_in_binary) + len(binary_form)) % 8
     extra_bits_needed = 8 - over_from_bytes
     extra_bits = "0" * extra_bits_needed
     to_save = tree_lenght_bin + data_lenght_bin + tree_in_binary + binary_form + extra_bits
@@ -78,12 +78,20 @@ def tree_to_binary(tree, tree_in_binary=""):
     return tree_in_binary
 
 def dehuffing(binary):
+    #print(binary)
     tree_lenght = int(binary[0:32], 2)
     data_lenght = int(binary[32:64], 2)
+    #print(binary[0:32])
+    #print(tree_lenght)
+    #print(binary[32:64])
+    #print(data_lenght)
     tree_in_binary = binary[64:64+tree_lenght]
     data_in_binary = binary[64+tree_lenght:64+tree_lenght+data_lenght+1]
+    #print(tree_in_binary)
+    #print(data_in_binary)
     tree = get_tree(tree_in_binary)
     text = get_text(data_in_binary, tree)
+    #print(data_in_binary)
     return text
 
 def get_tree(tree_in_binary):
@@ -115,4 +123,5 @@ def get_text(data_in_binary, tree):
         if node.symbol:
             text += node.symbol
             node = tree
+    #print(text)
     return text

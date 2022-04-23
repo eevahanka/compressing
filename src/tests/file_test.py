@@ -7,6 +7,7 @@ class TestFile_acces(unittest.TestCase):
         self.content = "i am a a very important file for the tests. So please do not edit me!"
         self.size = 69
         self.byte_path = "src/tests/test_byte_file.txt"
+        file_acces.create_file(self.file_path, self.content)
 
     def test_gets_correct_content(self):
         on_file = file_acces.open_file(self.file_path)

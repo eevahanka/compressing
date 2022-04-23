@@ -1,21 +1,70 @@
+import file_acces
+from huffman import huffman, dehuffing
+
 class Ui:
     def __init__(self, io) -> None:
         self.io = io
 
     def start(self):
         self.io.output("welcome to compressing")
-        file_to_compress = self.get_file()
-        self.compressing(file_to_compress)
+        self.options()
 
-    def get_file(self):
-        #this is temporary
-        file_to_compress = self.io.input("what do you want to compress? ")
-        return file_to_compress
+    def options(self):
+        while True:
+            self.io.output("what do you want to do?")
+            self.io.output("1: compress with huffman\n2: compress with lzw\n3: compress with both \n4: decompress with huffman\n5: decompress with lzw\n0: quit")
+            user_input = self.io.input("")
+            if user_input == "0":
+                self.io.output("goodbye")
+                break
+            if user_input == "1":
+                input_file = "src/tests/test_file.txt"#self.io.input("file to compress: ")
+                output_file = "src/tests/test_byte_file.txt"#self.io.input("where to save: ")
+                self.compress_with_huffman(input_file, output_file)
+            elif user_input == "2":
+                input_file = self.io.input("file to compress: ")
+                output_file = self.io.input("where to save: ")
+                self.compress_with_lzw(input_file, output_file)
+            elif user_input == "3":
+                input_file = self.io.input("file to compress: ")
+                output_file_huff = self.io.input("where to save huffman: ")
+                output_file_lzw = self.io.input("where to save lzw: ")
+                self.compress_with_huffman(input_file, output_file_huff)
+                self.compress_with_lzw(input_file, output_file_lzw)
+            elif user_input == "4":
+                input_file = "src/tests/test_byte_file.txt" #self.io.input("file to decompress: ")
+                output_file = "src/tests/test_file.txt"#self.io.input("where to save: ")
+                self.decompress_with_huff(input_file, output_file)
+            elif user_input == "5":
+                input_file = self.io.input("file to compress: ")
+                output_file = self.io.input("where to save: ")
+                self.decompress_with_lzw(input_file, output_file)
 
-    def compressing(self, file_to_compress):
+    def compress_with_huffman(self, input_file, output_file):
         self.io.output("compressing...")
-        #will call compressing algorthims !
-        self.io.output("this feature doesn't exist!")
+        text = file_acces.open_file(input_file)
+        compressed_text = huffman(text)
+        #print(compressed_text)
+        file_acces.write_bytes(output_file, compressed_text)
+        self.io.output("your file has been compressed!")
+        original_size = file_acces.get_file_size(input_file)
+        new_size = file_acces.get_file_size(output_file)
+        self.compare(original_size, new_size)
+
+    def decompress_with_huff(self, input_file, output_file):
+        self.io.output("decompressing....")
+        bina = file_acces.read_bytes(input_file)
+        text = dehuffing(bina)
+        #print(bina)
+        file_acces.create_file(output_file, text)
+        #print(text)
+        self.io.output("decompressed!")
+
+    def compress_with_lzw(self, input_file, output_file):
+        self.io.output("no")
+
+    def decompress_with_lzw(self, input_file, output_file):
+        self.io.output("no")
 
     def compare(self, original_size, new_size):
         if original_size == 0:

@@ -2,7 +2,7 @@ import unittest
 from ui import Ui
 
 class Stub_io:
-    def __init__(self, inputs = []) -> None:
+    def __init__(self, inputs=[]) -> None:
         self.inputs = inputs
         self.outputs = []
 
@@ -24,3 +24,11 @@ class TestUi(unittest.TestCase):
     def test_compare_dosent_divide_by_zero(self):
         self.stub_ui.compare(0, 4)
         self.assertEqual("original size shouldn't be zero!", self.io.outputs[-1])
+
+    def test_compress_with_huffman(self):
+        file_path = "src/tests/test_file.txt"
+        byte_path = "src/tests/test_byte_file.txt"
+        self.io = Stub_io(["1", file_path, byte_path, "4", byte_path, file_path, "0"])
+        self.stub_ui = Ui(self.io)
+        self.stub_ui.start()
+        self.assertEqual("goodbye", self.io.outputs[-1])

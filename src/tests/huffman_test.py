@@ -61,7 +61,6 @@ class TestHuffman(unittest.TestCase):
         nodes_heap = huffman.make_nodes_heap(self.freq_dict)
         node = huffman.make_tree(nodes_heap)
         codes = huffman.calculate_codes(node)
-        print(codes)
         self.assertEqual(codes["n"],"00")
         self.assertEqual(codes["4"],"01")
         self.assertEqual(codes["a"],"1")
@@ -85,9 +84,7 @@ class TestHuffman(unittest.TestCase):
     def test_get_tree(self):
         tree_in_binary = "00111011101011010011100001"
         tree = huffman.get_tree(tree_in_binary)
-        print(tree)
         node1 = tree.right_child
-        print(node1.symbol)
         self.assertEqual(node1.symbol, "a")
         self.assertEqual(node1.left_child, None)
         self.assertEqual(node1.right_child, None)
@@ -108,5 +105,10 @@ class TestHuffman(unittest.TestCase):
         bina = huffman.huffman(text)
         text_after_compressing = huffman.dehuffing(bina)
         self.assertEqual(text, text_after_compressing)
+        text = "i am a a very important file for the tests. So please do not edit me!"
+        bina = huffman.huffman(text)
+        text_after_compressing = huffman.dehuffing(bina)
+        self.assertEqual(text, text_after_compressing)
+
 
         
