@@ -55,8 +55,8 @@ def make_huffman(codes, text):
 
 def get_everything_in_bin(binary_form, tree):
     tree_in_binary = tree_to_binary(tree)
-    tree_lenght_bin = format(len(tree_in_binary), "016b")
-    data_lenght_bin = format(len(binary_form), "016b")
+    tree_lenght_bin = format(len(tree_in_binary), "032b")
+    data_lenght_bin = format(len(binary_form), "032b")
     #lenght of tree in bin, lenght of the data in bin, tree in bin, data in bin, couple extra bits
     over_from_bytes = (32 + len(tree_in_binary) + len(binary_form)) % 8
     extra_bits_needed = 8 - over_from_bytes
@@ -78,10 +78,10 @@ def tree_to_binary(tree, tree_in_binary=""):
     return tree_in_binary
 
 def dehuffing(binary):
-    tree_lenght = int(binary[0:16], 2)
-    data_lenght = int(binary[16:32], 2)
-    tree_in_binary = binary[32:32+tree_lenght]
-    data_in_binary = binary[32+tree_lenght:32+tree_lenght+data_lenght+1]
+    tree_lenght = int(binary[0:32], 2)
+    data_lenght = int(binary[32:64], 2)
+    tree_in_binary = binary[64:64+tree_lenght]
+    data_in_binary = binary[64+tree_lenght:64+tree_lenght+data_lenght+1]
     tree = get_tree(tree_in_binary)
     text = get_text(data_in_binary, tree)
     return text

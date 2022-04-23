@@ -80,7 +80,7 @@ class TestHuffman(unittest.TestCase):
 
     def test_makes_correct_binary(self):
         bin_huff = huffman.huffman("aa4na4")
-        self.assertEqual(bin_huff, "000000000001101000000000000010010011101110101101001110000111010010100000" )
+        self.assertEqual(bin_huff, "00000000000000000000000000011010000000000000000000000000000010010011101110101101001110000111010010100000" )
 
     def test_get_tree(self):
         tree_in_binary = "00111011101011010011100001"
@@ -104,8 +104,9 @@ class TestHuffman(unittest.TestCase):
         self.assertEqual(text, "aa4na4")
 
     def test_huffman_works(self):
-        text = "aa4na4"
+        text = "im wery long and comlpvate text eith numbers and other things 12345!!"
         bina = huffman.huffman(text)
-        self.assertEqual(bina, "000000000001101000000000000010010011101110101101001110000111010010100000")
         text_after_compressing = huffman.dehuffing(bina)
         self.assertEqual(text, text_after_compressing)
+
+        
