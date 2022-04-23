@@ -1,14 +1,14 @@
 import os
 
 def open_file(file_path):
-    file = open(file_path, "r")
-    content = file.read()
+    with open(file_path, "r") as file:
+        content = file.read()
     file.close()
     return content
 
 def create_file(file_path, content):
-    file = open(file_path, "w")
-    file.write(content)
+    with open(file_path, "w") as file:
+        file.write(content)
     file.close()
 
 def get_file_size(file_path):

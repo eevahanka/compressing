@@ -81,3 +81,31 @@ class TestHuffman(unittest.TestCase):
     def test_makes_correct_binary(self):
         bin_huff = huffman.huffman("aa4na4")
         self.assertEqual(bin_huff, "000000000001101000000000000010010011101110101101001110000111010010100000" )
+
+    def test_get_tree(self):
+        tree_in_binary = "00111011101011010011100001"
+        tree = huffman.get_tree(tree_in_binary)
+        print(tree)
+        node1 = tree.right_child
+        print(node1.symbol)
+        self.assertEqual(node1.symbol, "a")
+        self.assertEqual(node1.left_child, None)
+        self.assertEqual(node1.right_child, None)
+        node2 = tree.left_child.right_child
+        self.assertEqual(node2.symbol, "4")
+        node3 = tree.left_child
+        self.assertEqual(node3.symbol, None)
+    
+    def test_get_text(self):
+        text_in_binary = "110100101"
+        tree_in_binary = "00111011101011010011100001"
+        tree = huffman.get_tree(tree_in_binary)
+        text = huffman.get_text(text_in_binary, tree)
+        self.assertEqual(text, "aa4na4")
+
+    def test_huffman_works(self):
+        text = "aa4na4"
+        bina = huffman.huffman(text)
+        self.assertEqual(bina, "000000000001101000000000000010010011101110101101001110000111010010100000")
+        text_after_compressing = huffman.dehuffing(bina)
+        self.assertEqual(text, text_after_compressing)

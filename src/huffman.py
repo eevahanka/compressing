@@ -77,4 +77,42 @@ def tree_to_binary(tree, tree_in_binary=""):
         tree_in_binary = tree_to_binary(tree.right_child, tree_in_binary)
     return tree_in_binary
 
-#dehuffing
+def dehuffing(binary):
+    tree_lenght = int(binary[0:16], 2)
+    data_lenght = int(binary[16:32], 2)
+    tree_in_binary = binary[32:32+tree_lenght]
+    data_in_binary = binary[32+tree_lenght:32+tree_lenght+data_lenght+1]
+    tree = get_tree(tree_in_binary)
+    text = get_text(data_in_binary, tree)
+    return text
+
+def get_tree(tree_in_binary):
+    def read_bits(spot):
+        if spot >= len(tree_in_binary):
+            return None, spot
+        bit = tree_in_binary[spot]
+        if bit == "1":
+            symbol_range_left = spot+1
+            symbol_range_right = symbol_range_left + 7
+            symbol_bits = tree_in_binary[symbol_range_left:symbol_range_right]
+            symbol_encoded = int(symbol_bits, 2)
+            symbol = chr(symbol_encoded)
+            return create_node(None, symbol), symbol_range_right
+        left_node, pos = read_bits(spot + 1)
+        right_node, pos = read_bits(pos)
+        return add_node(left_node, right_node), pos
+    node, pos = read_bits(0)
+    return node
+
+def get_text(data_in_binary, tree):
+    text = ""
+    node = tree
+    for number in data_in_binary:
+        if number == "0":
+            node = node.left_child
+        elif number == "1":
+            node = node.right_child
+        if node.symbol:
+            text += node.symbol
+            node = tree
+    return text
