@@ -59,8 +59,11 @@ def get_everything_in_bin(binary_form, tree):
     data_lenght_bin = format(len(binary_form), "032b")
     #lenght of tree in bin, lenght of the data in bin, tree in bin, data in bin, couple extra bits
     over_from_bytes = (64 + len(tree_in_binary) + len(binary_form)) % 8
-    extra_bits_needed = 8 - over_from_bytes
-    extra_bits = "0" * extra_bits_needed
+    if over_from_bytes == 0:
+        extra_bits = ""
+    else:
+        extra_bits_needed = 8 - over_from_bytes
+        extra_bits = "0" * extra_bits_needed
     to_save = tree_lenght_bin + data_lenght_bin + tree_in_binary + binary_form + extra_bits
     return to_save
 

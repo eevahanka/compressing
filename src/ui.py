@@ -1,5 +1,6 @@
 import file_acces
 from huffman import huffman, dehuffing
+from zlw import zlw, un_zlw
 
 class Ui:
     def __init__(self, io) -> None:
@@ -61,10 +62,24 @@ class Ui:
         self.io.output("decompressed!")
 
     def compress_with_lzw(self, input_file, output_file):
-        self.io.output("no")
+        self.io.output("compressing...")
+        text = file_acces.open_file(input_file)
+        compressed_text = zlw(text)
+        #print(compressed_text)
+        file_acces.write_bytes(output_file, compressed_text)
+        self.io.output("your file has been compressed!")
+        original_size = file_acces.get_file_size(input_file)
+        new_size = file_acces.get_file_size(output_file)
+        self.compare(original_size, new_size)
 
     def decompress_with_lzw(self, input_file, output_file):
-        self.io.output("no")
+        self.io.output("decompressing....")
+        bina = file_acces.read_bytes(input_file)
+        text = un_zlw(bina)
+        #print(bina)
+        file_acces.create_file(output_file, text)
+        #print(text)
+        self.io.output("decompressed!")
 
     def compare(self, original_size, new_size):
         if original_size == 0:
