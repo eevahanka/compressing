@@ -25,6 +25,9 @@ class TestZlw(unittest.TestCase):
         compressed_list = [97, 98, 99, 257, 97, 100]
         compressed_binary = zlw.make_zlw_binary(compressed_list)
         self.assertEqual(compressed_binary, "00000000000001100001000001100010000001100011000100000001000001100001000001100100")
+        compressed_list = [97, 98, 99, 257, 97]
+        compressed_binary = zlw.make_zlw_binary(compressed_list)
+        self.assertEqual(compressed_binary, "000001000000000001100001000001100010000001100011000100000001000001100001")
 
     def test_get_binary(self):
         compressed_binary = "00000000000001100001000001100010000001100011000100000001000001100001000001100100"
