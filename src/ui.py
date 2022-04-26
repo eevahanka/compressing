@@ -18,8 +18,8 @@ class Ui:
                 self.io.output("goodbye")
                 break
             if user_input == "1":
-                input_file = "src/tests/test_file.txt"#self.io.input("file to compress: ")
-                output_file = "src/tests/test_byte_file.txt"#self.io.input("where to save: ")
+                input_file = self.io.input("file to compress: ")
+                output_file = self.io.input("where to save: ")
                 self.compress_with_huffman(input_file, output_file)
             elif user_input == "2":
                 input_file = self.io.input("file to compress: ")
@@ -32,8 +32,8 @@ class Ui:
                 self.compress_with_huffman(input_file, output_file_huff)
                 self.compress_with_lzw(input_file, output_file_lzw)
             elif user_input == "4":
-                input_file = "src/tests/test_byte_file.txt" #self.io.input("file to decompress: ")
-                output_file = "src/tests/test_file.txt"#self.io.input("where to save: ")
+                input_file = self.io.input("file to decompress: ")
+                output_file = self.io.input("where to save: ")
                 self.decompress_with_huff(input_file, output_file)
             elif user_input == "5":
                 input_file = self.io.input("file to compress: ")
