@@ -45,7 +45,7 @@ class TestUi(unittest.TestCase):
         file_path = "src/tests/test_file.txt"
         byte_path1 = "src/tests/test_byte_file.txt"
         byte_path2 = "src/tests/test_byte_file2.txt"
-        self.io = Stub_io(["3", file_path, byte_path1, byte_path2, "0"])
+        self.io = Stub_io(["3", file_path, byte_path1, byte_path2, "4", byte_path1, file_path, "5", byte_path2, file_path, "0"])
         self.stub_ui = Ui(self.io)
         self.stub_ui.start()
         self.assertEqual("goodbye", self.io.outputs[-1])
