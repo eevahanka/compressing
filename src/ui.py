@@ -15,9 +15,6 @@ class Ui:
             self.io.output("what do you want to do?")
             self.io.output("1: compress with huffman\n2: compress with lzw\n3: compress with both \n4: decompress with huffman\n5: decompress with lzw\n0: quit")
             user_input = self.io.input("")
-            if user_input == "0":
-                self.io.output("goodbye")
-                break
             if user_input == "1":
                 input_file = self.io.input("file to compress: ")
                 output_file = self.io.input("where to save: ")
@@ -40,12 +37,14 @@ class Ui:
                 input_file = self.io.input("file to compress: ")
                 output_file = self.io.input("where to save: ")
                 self.decompress_with_lzw(input_file, output_file)
+            else:
+                self.io.output("goodbye")
+                break
 
     def compress_with_huffman(self, input_file, output_file):
         self.io.output("compressing...")
         text = file_acces.open_file(input_file)
         compressed_text = huffman(text)
-        #print(compressed_text)
         file_acces.write_bytes(output_file, compressed_text)
         self.io.output("your file has been compressed!")
         original_size = file_acces.get_file_size(input_file)
@@ -56,16 +55,13 @@ class Ui:
         self.io.output("decompressing....")
         bina = file_acces.read_bytes(input_file)
         text = dehuffing(bina)
-        #print(bina)
         file_acces.create_file(output_file, text)
-        #print(text)
         self.io.output("decompressed!")
 
     def compress_with_lzw(self, input_file, output_file):
         self.io.output("compressing...")
         text = file_acces.open_file(input_file)
         compressed_text = zlw(text)
-        #print(compressed_text)
         file_acces.write_bytes(output_file, compressed_text)
         self.io.output("your file has been compressed!")
         original_size = file_acces.get_file_size(input_file)
@@ -76,9 +72,7 @@ class Ui:
         self.io.output("decompressing....")
         bina = file_acces.read_bytes(input_file)
         text = un_zlw(bina)
-        #print(bina)
         file_acces.create_file(output_file, text)
-        #print(text)
         self.io.output("decompressed!")
 
     def compare(self, original_size, new_size):

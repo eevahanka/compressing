@@ -26,14 +26,11 @@ class TestHuffman(unittest.TestCase):
     def test_heap_creation(self):
         nodes_heap = huffman.make_nodes_heap(self.freq_dict)
         self.assertEqual(len(nodes_heap), 3)
-        tupple = heapq.heappop(nodes_heap)
-        node = tupple[1]
+        node = heapq.heappop(nodes_heap)
         self.assertEqual(node.symbol, "n")
         self.assertEqual(node.value, 1)
-        self.assertEqual(tupple[0], 1)
         heapq.heappop(nodes_heap)
-        tupple = heapq.heappop(nodes_heap)
-        node = tupple[1]
+        node = heapq.heappop(nodes_heap)
         self.assertEqual(node.symbol, "a")
         self.assertEqual(node.value, 4)
 

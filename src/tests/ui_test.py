@@ -40,3 +40,12 @@ class TestUi(unittest.TestCase):
         self.stub_ui = Ui(self.io)
         self.stub_ui.start()
         self.assertEqual("goodbye", self.io.outputs[-1])
+
+    def test_compress_with_both(self):
+        file_path = "src/tests/test_file.txt"
+        byte_path1 = "src/tests/test_byte_file.txt"
+        byte_path2 = "src/tests/test_byte_file2.txt"
+        self.io = Stub_io(["3", file_path, byte_path1, byte_path2, "0"])
+        self.stub_ui = Ui(self.io)
+        self.stub_ui.start()
+        self.assertEqual("goodbye", self.io.outputs[-1])

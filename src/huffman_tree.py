@@ -6,9 +6,9 @@ class Nodde:
         self.symbol = symbol
 
     def __gt__(self, another_nodde):
-        ''' This makes heaps work if there are 2 or more same frequencies in data
+        ''' This makes heaps work
         '''
-        return True
+        return self.value >= another_nodde.value
 
     def __str__(self) -> str:
         ''' for debugging

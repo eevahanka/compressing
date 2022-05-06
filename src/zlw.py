@@ -4,17 +4,12 @@ def zlw(text):
     return compressed_binary
 
 def un_zlw(compressed_binary):
-    print(compressed_binary)
     compressed_list = get_compressed_list_from_binary(compressed_binary)
-    print(compressed_list)
     text = un_compress_zlw(compressed_list)
-    print(text)
     return text
 
 def compress_zlw(text):
-    values = {}
-    for i in range(256):
-        values[chr(i)] = i
+    values = {chr(x): x for x in range(256)}
     next_value = 256
     compressed_list = []
     current_character = text[0]
@@ -45,9 +40,7 @@ def make_zlw_binary(compressed_list):
     return str(format(extra_bits_needed, "08b")) + extra_bits + compressed_binary
 
 def un_compress_zlw(compressed_list):
-    values = {}
-    for i in range(256):
-        values[i] = chr(i)
+    values = {x: chr(x) for x in range(256)}
     text = ""
     value = 256
     current_value = compressed_list[0]

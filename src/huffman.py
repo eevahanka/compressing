@@ -24,17 +24,17 @@ def make_nodes_heap(frequencies):
     for symbol, value in frequencies.items():
         if value != 0:
             node = create_node(value, symbol)
-            nodes.append((value, node))
+            nodes.append(node)
     heapq.heapify(nodes)
     return nodes
 
 def make_tree(nodes):
     while len(nodes) > 1:
-        node1 = heapq.heappop(nodes)[1]
-        node2 = heapq.heappop(nodes)[1]
+        node1 = heapq.heappop(nodes)
+        node2 = heapq.heappop(nodes)
         new_node = add_node(node1, node2)
-        heapq.heappush(nodes, (new_node.value, new_node))
-    return heapq.heappop(nodes)[1]
+        heapq.heappush(nodes, new_node)
+    return heapq.heappop(nodes)
 
 def calculate_codes(point, codes={}, code=""):
     if point.left_child:
@@ -81,20 +81,12 @@ def tree_to_binary(tree, tree_in_binary=""):
     return tree_in_binary
 
 def dehuffing(binary):
-    #print(binary)
     tree_lenght = int(binary[0:32], 2)
     data_lenght = int(binary[32:64], 2)
-    #print(binary[0:32])
-    #print(tree_lenght)
-    #print(binary[32:64])
-    #print(data_lenght)
     tree_in_binary = binary[64:64+tree_lenght]
     data_in_binary = binary[64+tree_lenght:64+tree_lenght+data_lenght+1]
-    #print(tree_in_binary)
-    #print(data_in_binary)
     tree = get_tree(tree_in_binary)
     text = get_text(data_in_binary, tree)
-    #print(data_in_binary)
     return text
 
 def get_tree(tree_in_binary):
@@ -126,5 +118,4 @@ def get_text(data_in_binary, tree):
         if node.symbol:
             text += node.symbol
             node = tree
-    #print(text)
     return text
