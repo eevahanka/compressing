@@ -6,6 +6,10 @@ Project for datastructure and algorithm lab course at the University of Helsinki
 
 [testing document](documentation/testing_document.md)
 
+[implementation document](documentation/implementation_document.md)
+
+[user quide](documentation/user_guide.md)
+
 [week report 1](documentation/week_report1.md)
 
 [week report 2](documentation/week_report2.md)
