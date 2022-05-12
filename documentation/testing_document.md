@@ -2,7 +2,7 @@
 
 ## coverage report
 
-![test coverage](coverage6.jpeg)
+![test coverage](coverage7.jpeg)
 
 ## What has been tested and how
 
