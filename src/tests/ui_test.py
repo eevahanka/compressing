@@ -18,8 +18,8 @@ class TestUi(unittest.TestCase):
         self.stub_ui = Ui(self.io)
 
     def test_compare_calculates_correctly(self):
-        self.stub_ui.compare(10, 4)
-        self.assertEqual(f"compressed file is 60.0% smaller than the original", self.io.outputs[-1])
+        smaller = self.stub_ui.compare(10, 4)
+        self.assertEqual(smaller, 60.0)
 
     def test_compare_dosent_divide_by_zero(self):
         self.stub_ui.compare(0, 4)

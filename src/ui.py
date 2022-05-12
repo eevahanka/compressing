@@ -46,10 +46,11 @@ class Ui:
         text = file_acces.open_file(input_file)
         compressed_text = huffman(text)
         file_acces.write_bytes(output_file, compressed_text)
-        self.io.output("your file has been compressed!")
+        self.io.output("your file has been compressed with huffman!")
         original_size = file_acces.get_file_size(input_file)
         new_size = file_acces.get_file_size(output_file)
-        self.compare(original_size, new_size)
+        smaller_prosents = self.compare(original_size, new_size)
+        self.io.output(f"compressed file is {smaller_prosents}% smaller than the original")
 
     def decompress_with_huff(self, input_file, output_file):
         self.io.output("decompressing....")
@@ -63,10 +64,11 @@ class Ui:
         text = file_acces.open_file(input_file)
         compressed_text = zlw(text)
         file_acces.write_bytes(output_file, compressed_text)
-        self.io.output("your file has been compressed!")
+        self.io.output("your file has been compressed with lzw!")
         original_size = file_acces.get_file_size(input_file)
         new_size = file_acces.get_file_size(output_file)
-        self.compare(original_size, new_size)
+        smaller_prosents = self.compare(original_size, new_size)
+        self.io.output(f"compressed file is {smaller_prosents}% smaller than the original")
 
     def decompress_with_lzw(self, input_file, output_file):
         self.io.output("decompressing....")
@@ -78,6 +80,6 @@ class Ui:
     def compare(self, original_size, new_size):
         if original_size == 0:
             self.io.output("original size shouldn't be zero!")
-            return
+            return 0
         smaller_prosents = (original_size - new_size)/original_size *100
-        self.io.output(f"compressed file is {smaller_prosents}% smaller than the original")
+        return smaller_prosents
