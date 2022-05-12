@@ -24,6 +24,6 @@ Input given to program is txt file and output will be hopefully significantly sm
 Target is to be able reduce file sice 40-60% without any information lost and to be able to uncompress the files
 
 ## sources
-[huffman on wikipedia](https://fi.wikipedia.org/wiki/Huffmanin_koodaus)
+[huffman on wikipedia](https://en.wikipedia.org/wiki/Huffman_coding)
 
 [Lempel-Ziv on wikipedia](https://fi.wikipedia.org/wiki/Lempel-Ziv)
