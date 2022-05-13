@@ -21,3 +21,6 @@ Project for datastructure and algorithm lab course at the University of Helsinki
 [week report 5](documentation/week_report5.md)
 
 [week report 6](documentation/week_report6.md)
+
+[week report 7](documentation/week_report7.md)
+
