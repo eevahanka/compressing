@@ -78,7 +78,7 @@ def huff_good():
         os.remove(hufff)
     return amounts
 
-def get_average_speed(speeds:list):
+def get_average(speeds:list):
     return mean(speeds)
 
 def zlw_speed():
@@ -99,23 +99,20 @@ def multis():
     ghh = huff_speed()
     print("huff speed")
     print(ghh)
-    print(get_average_speed(ghh))
+    print(get_average(ghh))
     ghh = zlw_speed()
     print("zlw speed")
     print(ghh)
-    print(get_average_speed(ghh))
+    print(get_average(ghh))
     ghh = huff_good()
     print("huff amount")
     print(ghh)
-    print(get_average_speed(ghh))
+    print(get_average(ghh))
     ghh = zlw_good()
     print("zlw amount")
     print(ghh)
-    print(get_average_speed(ghh))
+    print(get_average(ghh))
 
 if __name__ == "__main__":
     liirum()
-    
-
-
-
+    multis()
